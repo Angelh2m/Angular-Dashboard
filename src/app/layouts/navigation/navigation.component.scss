@@ -1,0 +1,72 @@
+@import '../../../sass/media.scss';
+
+ul {
+    overflow: scroll;
+    min-width: 2rem;
+    display: flex;
+    /* padding-top: .5rem; */
+    margin: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+  @include tablet {
+    display: block;
+    padding: 0rem;
+    margin: 0rem;
+  }
+
+}
+
+li {
+
+ padding: 1rem;
+    margin-bottom: 0rem;
+    border-bottom: solid 2px white;
+    padding-top: 0;
+    padding-bottom: 0;
+    cursor: pointer;
+    line-height: 2;
+    background-color: #232940;
+    border: solid 1px #3a3f56;
+    
+  @include tablet {
+    padding: 0rem;
+    background-color: transparent;
+    border-bottom: solid 0px;
+    border: solid 0px;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+
+
+  a {
+   text-decoration: none;
+//     color: white;
+    color: #b3b3b3;
+    /* padding-right: 3rem; */
+    /* padding-bottom: 1rem; */
+    display: block;
+    padding: .6rem 1.5rem;
+    padding-left: 0px;
+  }
+}
+
+
+.active-link {
+//   border-bottom: solid 2px #3F51B5;
+  a{
+    color: white;
+  }
+  @include tablet {
+
+    border-bottom: solid 0px;
+
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

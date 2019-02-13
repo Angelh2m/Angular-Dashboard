@@ -1,0 +1,47 @@
+@import '../../../sass/media';
+
+.msg__inbox {
+  padding: 1.5rem;
+  border-bottom: solid 1px gainsboro;
+
+
+  &.active {
+    background-color: white;
+
+  }
+
+
+  h3 {
+    font-size: .8rem;
+  }
+
+  span,
+  p,
+    {
+    font-size: .7rem;
+    color: #9da4ad;
+  }
+
+  span {
+    color: #2327bf;
+  }
+
+  time {
+    font-size: .6rem;
+    float: right;
+    color: #9da4ad;
+
+  }
+
+
+}
+
+
+.hide {
+  display: none;
+
+  @include tablet {
+
+    display: block;
+  }
+}

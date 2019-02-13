@@ -1,0 +1,27 @@
+<div [class]="'row msg ' + isActive">
+  <div class="msg--inbox">
+    <app-inbox-message [data]="inbox" (active)="showMe($event)"></app-inbox-message>
+  </div>
+
+  <div class="msg--conversation">
+    <time>22t July 2019</time>
+    <h3>Hello this is a question</h3>
+    <span class="label--blue">Othopedist</span>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloremque sit neque, et sunt omnis nobis
+      excepturi. Ducimus at consectetur velit neque asperiores maxime eveniet dolore, iusto placeat minus. Quibusdam.
+    </p>
+
+    <div class="form--reply">
+      <form>
+
+        <textarea>
+
+        </textarea>
+        <button class="button--blue">Send</button>
+      </form>
+
+    </div>
+  </div>
+
+</div>

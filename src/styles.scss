@@ -1,1 +1,212 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+label {
+  width: 100%;
+}
+
+input {
+  background-color: white;
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  overflow-x: hidden;
+}
+
+ul,
+li {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin-bottom: 2.5rem;
+}
+
+form {
+  width: 100%;
+
+  border-radius: .5rem;
+}
+
+a {
+  text-decoration: none;
+  color: #2f2e43;
+}
+
+input,
+textarea {
+  width: 100%;
+  display: block;
+  border: solid 1px whitesmoke;
+  line-height: 3.5;
+  padding-left: .6rem;
+  border: solid 1px #e0e0e0;
+  border-radius: 7px;
+  margin-bottom: 1rem;
+}
+
+article {
+  position: relative;
+  overflow-x: hidden;
+
+  * {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+  }
+}
+
+article {
+  h2 {
+    margin-bottom: 2.5rem;
+    margin-top: 4rem;
+  }
+}
+
+article {
+  padding: 1rem 1.5rem;
+  max-width: 1000px;
+  position: relative;
+  margin: 0 auto;
+}
+
+
+img {
+  width: 100%;
+}
+
+article {
+
+  p,
+  li {
+    color: black;
+    line-height: 2;
+  }
+}
+
+label {
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: .5rem;
+  float: left;
+
+}
+
+
+form {
+  width: 100%;
+
+}
+
+small {
+  font-size: .9rem;
+}
+
+footer {
+  padding: 4rem;
+  text-align: center;
+  position: relative;
+  display: block;
+  color: white;
+  background-color: #2f2e43;
+  border-top: solid;
+
+
+  span {
+    color: #00ffff;
+  }
+
+  small {
+    font-size: .5rem;
+    color: #00ffff;
+  }
+}
+
+
+html {
+  background-color: #f9fbfd;
+}
+
+p {
+  line-height: 1.7;
+}
+
+*> :first-child {
+
+  margin-left: 0 !important;
+}
+
+*> :last-child {
+
+  margin-right: 0 !important;
+}
+
+
+@import './sass/media.scss';
+
+// Labels
+.label--blue {
+  background-color: #e5f0fb;
+  padding: .5rem;
+  border: solid 1px;
+  font-size: .7rem;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+
+// buttons
+.button--blue {
+  background-color: #0a75ff;
+  color: white;
+  padding: .7rem 2rem;
+  border: solid;
+  font-size: .8rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+// Grid
+.containner-inner {
+  padding: 2rem;
+}
+
+.grid-container {
+
+  display: block;
+
+  @include tablet {
+    display: flex;
+  }
+
+}
+
+
+.row {
+  display: block;
+
+  @include tablet {
+    display: flex;
+  }
+}
+
+
+
+
+// Router
+
+.active-link {
+  font-weight: 600;
+}

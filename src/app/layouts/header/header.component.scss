@@ -1,0 +1,36 @@
+@import '../../../sass/media';
+
+.justify {
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+
+  @include tablet {
+    display: flex;
+  }
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+
+.row--center {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+
+  @include tablet {
+    display: flex;
+    margin-top: 0rem;
+  }
+}
+
+
+.avatar {
+  width: 3rem;
+  border-radius: 50%;
+  margin-right: .5rem;
+
+}
