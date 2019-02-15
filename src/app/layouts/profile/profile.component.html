@@ -1,12 +1,12 @@
-<div class="containner-inner">
+<div *ngIf="profile" class="containner-inner">
 
   <div class="row">
     <div class="card card__item">
       <div>
         <img class="card__avatar" src="https://st2.depositphotos.com/2703645/7676/v/950/depositphotos_76762205-stock-illustration-male-avatar-icon.jpg" />
-        <h2>Jhon Doe</h2>
-        <p>Email: jhonDoe@gmail.com</p>
-        <p>Membership Active: Free trial</p>
+        <h2>{{ profile.user.account.name}}</h2>
+        <p>Email: {{ profile.user.account.email}}</p>
+        <!-- <p>Membership Active: Free trial</p> -->
       </div>
     </div>
 
@@ -38,31 +38,27 @@
 
 
   <h2>Ask the doctor</h2>
-  <div class="card">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="card">
+    <div *ngIf="formStatus == 'summited'" class="success--button">
+      Your consultation has been successfully submitted.
+    </div>
     <div class="form--layout">
       <div>
         <label>Your question:</label>
-        <input type="text">
+        <input [(ngModel)]="model.question" name="question" type="text">
       </div>
       <div class="row">
         <div class="form--50">
           <label>Doctor (optional)</label>
-          <input type="text" list="languages">
-        </div>
-
-        <div class="form--50">
-          <label>File (otional)</label>
-          <input type="file">
+          <input [(ngModel)]="model.doctor" name="doctor" type="text" list="languages">
         </div>
       </div>
 
-
-
       <label>Additional information:</label>
-      <textarea></textarea>
+      <textarea [(ngModel)]="model.details" name="details"></textarea>
     </div>
     <button class="button--blue">Make a payment</button>
 
-  </div>
+  </form>
 
 </div>

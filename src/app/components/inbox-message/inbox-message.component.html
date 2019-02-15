@@ -1,10 +1,10 @@
 <div *ngFor="let message of data; let i = index">
-  <div (click)="activateCard(i)" id={{i}} [ngClass]=" activeCard == i ? 'msg__inbox active' :  onMobile  ">
+  <div (click)="activateCard(message._id)" id={{message._id}} [ngClass]=" activeCard == i ? 'msg__inbox active' :  onMobile  ">
     <div>
-      <span>{{ message.doctor }}</span>
+      <span>{{ message.desiredDoctor }}</span>
       <h3> {{ message.question }} </h3>
-      <p> {{message.excerpt}} </p>
-      <time>{{message.time}} </time>
+      <p> {{message.title}} </p>
+      <time>{{message.created | date }} </time>
     </div>
 
   </div>

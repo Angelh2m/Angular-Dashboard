@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ConversationService } from '../../services/Conversation/conversation.service';
+import { UserService } from 'src/app/services/user/user.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +10,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private User: UserService, private Consultation: ConversationService) { }
+  profile: any;
+  formStatus: any;
+  model: any = { question: "Hello from Angular", doctor: "Python", details: "Hello! " }
 
   ngOnInit() {
+
+    if (!this.User.loggedUser) {
+      this.User.getUserProfile().subscribe(resp => {
+        this.profile = resp
+      })
+    }
+
+    if (this.User.loggedUser) {
+      this.profile = this.User.loggedUser
+    }
+
+  }
+
+  onSubmit(f: NgForm) {
+    console.log(f.value);
+    let payload = f.value;
+    this.Consultation.submitQuestion(payload).subscribe((resp: any) => {
+      console.warn(resp);
+
+      if (resp) {
+        this.model = { question: "", doctor: "", details: "" }
+        this.formStatus = "summited";
+      }
+    })
+
   }
 
 }

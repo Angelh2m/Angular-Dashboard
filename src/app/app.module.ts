@@ -13,7 +13,8 @@ import { RecommendationsComponent } from './layouts/recommendations/recommendati
 import { BillingComponent } from './layouts/billing/billing.component';
 import { ProfileComponent } from './layouts/profile/profile.component';
 import { InboxMessageComponent } from './components/inbox-message/inbox-message.component';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { InboxMessageComponent } from './components/inbox-message/inbox-message.
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [],

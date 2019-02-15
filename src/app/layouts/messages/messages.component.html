@@ -1,21 +1,22 @@
 <div [class]="'row msg ' + isActive">
   <div class="msg--inbox">
-    <app-inbox-message [data]="inbox" (active)="showMe($event)"></app-inbox-message>
+    <app-inbox-message [data]="messages" (active)="showMe($event)"></app-inbox-message>
   </div>
 
-  <div class="msg--conversation">
-    <time>22t July 2019</time>
-    <h3>Hello this is a question</h3>
-    <span class="label--blue">Othopedist</span>
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit doloremque sit neque, et sunt omnis nobis
-      excepturi. Ducimus at consectetur velit neque asperiores maxime eveniet dolore, iusto placeat minus. Quibusdam.
-    </p>
+  <div class="msg--conversation" *ngIf="singleMessage">
+    <time>{{singleMessage.created | date}}</time>
+    <h3>{{singleMessage.question}}</h3>
+    <span class="label--blue"> {{singleMessage.desiredDoctor}}</span>
+    <p> {{singleMessage.question}} </p>
 
+    <div *ngFor="let item of singleMessage.reply">
+      <hr>
+      {{item.message}}
+    </div>
     <div class="form--reply">
-      <form>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
 
-        <textarea>
+        <textarea [(ngModel)]="message" name="message">
 
         </textarea>
         <button class="button--blue">Send</button>

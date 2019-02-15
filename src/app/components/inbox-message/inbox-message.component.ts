@@ -23,7 +23,7 @@ export class InboxMessageComponent implements OnInit {
     this.activeCard = Number(id);
     this.isTrue ? this.onMobile = "msg__inbox" : this.onMobile = "msg__inbox hide"
     this.isTrue = !this.isTrue;
-    this.active.emit({ active: this.isTrue });
+    this.active.emit({ active: this.isTrue, id });
     console.warn(this.isTrue, id);
   }
 
