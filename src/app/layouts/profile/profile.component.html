@@ -15,7 +15,10 @@
         <h3>Nofitications:</h3>
 
         <div class="notification">
-          <span>You don't have any notifications at this time</span>
+          <!-- <span>You don't have any notifications at this time</span> -->
+          <div *ngIf="profile.user.account.availableCredits">
+            <span>You have {{profile.user.account.availableCredits.length}} consultations paid</span>
+          </div>
         </div>
       </div>
     </div>
@@ -27,13 +30,7 @@
     <option value="JavaScript">
     <option value="Java">
     <option value="Ruby">
-    <option value="PHP">
-    <option value="Go">
-    <option value="Erlang">
-    <option value="Python">
-    <option value="C">
-    <option value="C#">
-    <option value="C++">
+
   </datalist>
 
 
@@ -41,6 +38,9 @@
   <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="card">
     <div *ngIf="formStatus == 'summited'" class="success--button">
       Your consultation has been successfully submitted.
+    </div>
+    <div *ngIf="formStatus == 'error'" class="alert--warning">
+      You don't have any consultations paid at this momment
     </div>
     <div class="form--layout">
       <div>
@@ -57,7 +57,7 @@
       <label>Additional information:</label>
       <textarea [(ngModel)]="model.details" name="details"></textarea>
     </div>
-    <button class="button--blue">Make a payment</button>
+    <button class="button--blue">Submit consultation</button>
 
   </form>
 

@@ -1,0 +1,33 @@
+@import '../../sass/media.scss';
+
+.header {
+  background-color: white;
+
+  padding: 2rem;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+
+
+.navigation {
+
+  //   background-color: whitesmoke;
+  //   padding: 1rem 1rem 0rem 1rem;
+
+  @include tablet {
+    padding: 2rem;
+    background-color: #232940;
+    color: white;
+    display: block;
+
+  }
+}
+
+
+.main {
+  border-top: solid 1px whitesmoke;
+  width: 100%;
+  border-left: solid 1px whitesmoke;
+  min-height: 36rem;
+}

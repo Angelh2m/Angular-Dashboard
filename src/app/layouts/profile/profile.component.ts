@@ -33,13 +33,16 @@ export class ProfileComponent implements OnInit {
     console.log(f.value);
     let payload = f.value;
     this.Consultation.submitQuestion(payload).subscribe((resp: any) => {
-      console.warn(resp);
 
       if (resp) {
         this.model = { question: "", doctor: "", details: "" }
         this.formStatus = "summited";
       }
-    })
+    },
+      err => {
+        console.warn(err.error.message);
+        this.formStatus = "error";
+      })
 
   }
 

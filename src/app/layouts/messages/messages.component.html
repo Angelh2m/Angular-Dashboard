@@ -2,8 +2,10 @@
   <div class="msg--inbox">
     <app-inbox-message [data]="messages" (active)="showMe($event)"></app-inbox-message>
   </div>
-
-  <div class="msg--conversation" *ngIf="singleMessage">
+  <div class="msg--conversation" *ngIf="!singleMessage.created">
+    <h3>Select a consultation archive</h3>
+  </div>
+  <div class="msg--conversation" *ngIf="singleMessage.created">
     <time>{{singleMessage.created | date}}</time>
     <h3>{{singleMessage.question}}</h3>
     <span class="label--blue"> {{singleMessage.desiredDoctor}}</span>
@@ -15,13 +17,10 @@
     </div>
     <div class="form--reply">
       <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-
         <textarea [(ngModel)]="message" name="message">
-
         </textarea>
         <button class="button--blue">Send</button>
       </form>
-
     </div>
   </div>
 

@@ -1,0 +1,18 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="card">
+
+  <div class="form--layout">
+    <div>
+      <label>Email:</label>
+      <input [(ngModel)]="user.email" name="email" type="text">
+    </div>
+    <div class="row">
+      <div class="form--50">
+        <label>Password</label>
+        <input [(ngModel)]="user.password" name="password" type="password">
+      </div>
+    </div>
+
+  </div>
+  <button class="button--blue">Submit consultation</button>
+
+</form>
