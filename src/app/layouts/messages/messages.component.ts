@@ -22,43 +22,46 @@ export class MessagesComponent implements OnInit {
     },
   ]
 
-  singleMessage = {
+  singleMessage: any = {
     created: "", email: "", files: [], lastUpdate: "", _id: "",
     desiredDoctor: "", question: "", reply: [], resolved: false, response: { date: "" }, userRef: ""
   }
 
   message: any;
 
+  successMessage: any;
+
 
 
   constructor(public User: UserService, private conversation: ConversationService) { }
 
   ngOnInit() {
-    if (!this.User.loggedUser) {
-      this.User.getUserProfile().subscribe(resp => {
-        this.messages = resp.user.consultations
-      })
+    console.warn(this.User.isUserLoaded);
+
+    if (this.User.isUserLoaded) {
+      console.warn("MESSAGES", this.User.loggedUser);
+      return this.messages = this.User.loggedUser.user.consultations
     }
 
-    if (this.User.loggedUser) {
-      this.messages = this.User.loggedUser.user.consultations
-    }
+    this.User.getUserProfile().subscribe(resp => {
+      console.warn("MESSAGES", resp);
+
+      this.messages = [...resp.user.consultations]
+    })
 
   }
 
   showMe(e) {
-    // console.log(e);
-
     this.conversation.getConversation(e.id).subscribe(resp => {
+      console.warn(resp);
+      this.successMessage = "";
+
       this.singleMessage = { ...resp[e.id].response }
-      console.warn(this.singleMessage);
     })
-
-
     this.isActive = e.active;
   }
 
-  onSubmit(f: NgForm) {
+  onReply(f: NgForm) {
 
     let payload = {
       questionID: this.singleMessage._id,
@@ -66,14 +69,12 @@ export class MessagesComponent implements OnInit {
       type: "USER_REPLY"
     }
 
-    this.conversation.submitResponse(payload).subscribe(resp => {
+    // return console.log(this.User.loggedUser.user.consultations)
+    this.conversation.submitResponse(payload).subscribe((resp: any) => {
       console.warn(resp);
-
+      this.successMessage = "Message sent";
+      // this.singleMessage = { ...resp.response }
     })
-
-    // let payload = f.value;
-
-
   }
 
 }

@@ -13,18 +13,18 @@ export class BillingComponent implements OnInit {
 
   ngOnInit() {
 
-    if (!this.User.loggedUser) {
+    if (this.User.isUserLoaded) {
+      console.log("FROM CACHE");
+      return this.payment = this.User.loggedUser.user.payments
+    }
+
+
+    if (!this.User.isUserLoaded) {
       this.User.getUserProfile().subscribe(resp => {
-        this.payment = resp.user.payments;
-        console.warn(this.payment);
+        this.payment = resp.user.payments
       })
     }
 
-    if (this.User.loggedUser) {
-      this.payment = this.User.loggedUser.user.payments
-      console.warn(this.User.loggedUser);
-
-    }
 
   }
 

@@ -17,16 +17,21 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
 
-    if (!this.User.loggedUser) {
-      this.User.getUserProfile().subscribe(resp => {
-        this.profile = resp
-      })
+    if (!this.User.isUserLoaded) {
+      this.fetchUserProfile()
     }
 
-    if (this.User.loggedUser) {
+    if (this.User.isUserLoaded) {
       this.profile = this.User.loggedUser
     }
 
+  }
+
+  fetchUserProfile() {
+    return this.User.getUserProfile().subscribe(resp => {
+      console.warn("FIRST", resp);
+      this.profile = resp
+    })
   }
 
   onSubmit(f: NgForm) {
@@ -37,12 +42,10 @@ export class ProfileComponent implements OnInit {
       if (resp) {
         this.model = { question: "", doctor: "", details: "" }
         this.formStatus = "summited";
+        this.User.isUserLoaded = false;
       }
-    },
-      err => {
-        console.warn(err.error.message);
-        this.formStatus = "error";
-      })
+
+    }, err => { console.warn(err.error.message); this.formStatus = "error"; })
 
   }
 

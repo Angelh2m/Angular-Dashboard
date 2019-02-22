@@ -12,11 +12,23 @@
     <p> {{singleMessage.question}} </p>
 
     <div *ngFor="let item of singleMessage.reply">
-      <hr>
-      {{item.message}}
+      <div class="msg--card">
+        <img class="avatar" src={{item.userRef.account.avatar}} />
+        <div class="msg--card--box">
+          <p> {{item.userRef.account.name}}</p>
+          <p class="msg--card--date"> {{item.date | date }}</p>
+        </div>
+        <div></div>
+        {{item.message}}
+      </div>
     </div>
+
+    <div *ngIf="successMessage">
+      {{successMessage}}
+    </div>
+
     <div class="form--reply">
-      <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+      <form #f="ngForm" (ngSubmit)="onReply(f)" novalidate>
         <textarea [(ngModel)]="message" name="message">
         </textarea>
         <button class="button--blue">Send</button>

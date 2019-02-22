@@ -5,13 +5,12 @@
     <div>
       <strong> Doctor </strong> Care <small>MX</small>
     </div>
-    <strong (click)="logOut()">signOut</strong>
 
-    <div class="row--center">
-      <img class="avatar" src="https://st2.depositphotos.com/2703645/7676/v/950/depositphotos_76762205-stock-illustration-male-avatar-icon.jpg">
-      <span> Hello! Jhon Doe</span>
-
+    <div class="row--center" *ngIf="userData">
+      <img class="avatar" src={{userData.user.account.avatar}}>
+      <span>Hello! {{userData.user.account.name}}</span>
     </div>
+
 
 
 

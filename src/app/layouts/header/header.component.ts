@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public user: UserService) { }
+
+  userData: any;
 
   ngOnInit() {
+    this.user.userData.subscribe(resp => {
+      console.log(resp);
+      this.userData = resp;
+    })
+
   }
 
-  logOut() {
-    console.log("REMOVE");
-    localStorage.removeItem("Token")
-  }
+  // logOut() {
+  //   console.log("REMOVE");
+  //   localStorage.removeItem("Token")
+  // }
 }

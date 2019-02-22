@@ -1,9 +1,10 @@
+<app-login-state></app-login-state>
 <div *ngIf="profile" class="containner-inner">
 
   <div class="row">
     <div class="card card__item">
       <div>
-        <img class="card__avatar" src="https://st2.depositphotos.com/2703645/7676/v/950/depositphotos_76762205-stock-illustration-male-avatar-icon.jpg" />
+        <img class="card__avatar" src={{profile.user.account.avatar}} />
         <h2>{{ profile.user.account.name}}</h2>
         <p>Email: {{ profile.user.account.email}}</p>
         <!-- <p>Membership Active: Free trial</p> -->

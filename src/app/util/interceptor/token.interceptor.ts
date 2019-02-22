@@ -14,11 +14,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
         let TOKEN = localStorage.getItem("Token");
 
-
-        // let token: any = this.userService.userToken;
-        // // If there is no token!
-        // if (!token) { token = ''; }
-
         const headers = new HttpHeaders({
             'Authorization': TOKEN ? TOKEN.replace(/(")/g, "") : "",
         });
